@@ -6,12 +6,12 @@
 #include <sstream>
 
 //imports
-
+/*
 float magnitude(std::vector<float> numbers); // prototype
 int countLines(const std::string& filename); // use to count the number of lines in a file
 int printLines(const std::string& filename, int nLines);
 std::vector<std::vector<float>> readLines(const std::string& filename);
-
+*/
 int main(){
 
     // print n lines of the data in plain text to the terminal
@@ -53,6 +53,8 @@ int main(){
 
     return 0;
 }
+
+/*
 
 float magnitude(std::vector<float> numbers){
     /*
@@ -173,7 +175,7 @@ std::vector<std::vector<float>> readLines(const std::string& filename){
     return coordinates;
 }
 
-
+*/
 
 
 /* old code
