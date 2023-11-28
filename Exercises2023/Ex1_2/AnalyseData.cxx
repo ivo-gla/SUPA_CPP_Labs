@@ -5,6 +5,8 @@
 #include <string.h>
 #include <sstream>
 
+#include "CustomFunctions.h"
+
 //imports
 /*
 float magnitude(std::vector<float> numbers); // prototype
@@ -57,12 +59,12 @@ int main(){
 /*
 
 float magnitude(std::vector<float> numbers){
-    /*
-    magnitude - finds the magnitude of a vector in 2d
-    inputs- vector (float) numbers - the coordinates in 2d
+    //
+    //magnitude - finds the magnitude of a vector in 2d
+    //inputs- vector (float) numbers - the coordinates in 2d
 
-    outputs - float mag1 - the magnitude of the vector
-    */
+    //outputs - float mag1 - the magnitude of the vector
+    //
 
 
     float mag1 = pow(pow(numbers[0],2) + pow(numbers[1],2), static_cast<float>(1)/2);
@@ -92,10 +94,10 @@ int countLines(const std::string& filename){
 }
 
 int printLines(const std::string& filename, int nLines ){
-    /*
-    prints nLines of a file named filename and has some error handling
     
-    */
+    //prints nLines of a file named filename and has some error handling
+    
+    
 
     std::ifstream file(filename);
     std::string line;
