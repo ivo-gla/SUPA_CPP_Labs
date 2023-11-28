@@ -9,7 +9,8 @@
 
 float magnitude(std::vector<float> numbers); // prototype
 int countLines(const std::string& filename); // use to count the number of lines in a file
-int printLines(const std::string& filename, int nLines );
+int printLines(const std::string& filename, int nLines);
+std::vector<std::vector<float>> readLines(const std::string& filename);
 
 int main(){
 
@@ -18,6 +19,7 @@ int main(){
     int number_of_lines; //the number of lines to print
     std::string line; //string to contain the lines of the file
     std::string token; //used to split up the data
+    
     
     
     std::cout<<"state the number of lines you would like to read in "; //user specified number of lines to read in
@@ -33,6 +35,19 @@ int main(){
     int total_lines = countLines(filename);
 
     std::cout << "the print function is finished" << std::endl;
+
+
+    std::vector<std::vector<float>> coordinates = readLines(filename);
+
+
+    for (const auto& row : coordinates) {
+        //std::cout << row[0] << " " <<row[1] << std::endl;
+        float mag1 = magnitude(row);
+        std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
+        
+    }
+
+
 
     
 
@@ -114,8 +129,8 @@ int printLines(const std::string& filename, int nLines ){
 }
 
 
-std::vector<float> readLines(const std::string& filename){
-
+std::vector<std::vector<float>> readLines(const std::string& filename){
+    std::vector<std::vector<float>> coordinates;
     std::vector<float> numbers;
     std::ifstream file(filename);
     std::string line;
@@ -144,7 +159,9 @@ std::vector<float> readLines(const std::string& filename){
                 float number = std::stod(token);
                 numbers.push_back(number);
             }
+            coordinates.push_back(numbers);
         }
+        i++;
     }
     
 
@@ -153,7 +170,7 @@ std::vector<float> readLines(const std::string& filename){
 
 
 
-    return numbers;
+    return coordinates;
 }
 
 
