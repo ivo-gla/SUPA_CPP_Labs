@@ -45,11 +45,12 @@ int main(){
     for (const auto& row : coordinates) {
         //std::cout << row[0] << " " <<row[1] << std::endl;
         float mag1 = magnitude(row);
-        std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
+        //std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
         
     }
 
-
+    std::string test = LeastSquaresCalc(coordinates);
+    std::cout << test << std::endl;
 
     
 

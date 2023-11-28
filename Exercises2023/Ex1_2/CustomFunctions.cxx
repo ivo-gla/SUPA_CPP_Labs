@@ -112,11 +112,72 @@ std::vector<std::vector<float>> readLines(const std::string& filename){
         i++;
     }
     
-
-
-
-
-
-
     return coordinates;
 }
+
+
+
+std::string LeastSquaresCalc(std::vector<std::vector<float>> coordinates){
+
+    std::string equation;
+    double p;
+    double q;
+    double sum_x;
+    double sum_y;
+    double sum_xy;
+    double sum_xx;
+    double N; 
+
+    //std::cout << "COORDS SIZE" <<coordinates.size() << std::endl;
+    N = coordinates.size();
+
+    for (const auto& row : coordinates) {
+
+        sum_x += row[0];
+        sum_y += row[1];
+        sum_xy += row[0] * row[1];
+        sum_xx += row[0] * row[0];
+        //std::cout << row[0] << " " <<row[1] << std::endl;
+        std::cout << row[1] << std::endl;
+        //float mag1 = magnitude(row);
+        //std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
+        
+    }
+
+    p = (N * sum_xy - sum_x * sum_y) / (N * sum_xx - sum_x * sum_x);
+    q = (sum_xx * sum_y - sum_xy * sum_x) / (N * sum_xx - sum_x * sum_x);
+
+    std::cout << "p" << p << std::endl;
+    std::cout << "q" << q << std::endl;
+
+    /*
+    $$
+    y=p x+q 
+    p=\frac{N \sum x_i y_i-\sum x_i \sum y_i}{N \sum x_i^2-\sum x_i \sum x_i},
+    q=\frac{\sum x_i^2 \sum y_i-\sum x_i y_i \sum x_i}{N \sum x_i^2-\sum x_i \sum x_i}
+    $$
+    */
+    std::string p1 = "The equation is y = ";
+    std::string pString = std::to_string(p);
+    std::string p2 = "x +";
+    std::string qString = std::to_string(q);
+    equation = p1.append(pString).append(p2).append(qString);
+
+
+
+    //equation = "The equation is y = " << p <<"x + "<< q <<;
+
+
+
+
+
+
+
+
+
+
+    return equation;
+}
+
+
+
