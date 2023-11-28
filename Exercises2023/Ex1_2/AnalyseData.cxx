@@ -106,7 +106,7 @@ int countLines(const std::string& filename){
 
     if (!file.is_open()) {
         std::cerr << "Error opening file: " << filename << std::endl;
-        return -1; // Return -1 to indicate an error
+        return -1; //return -1 to indicate an error opening this file
     }
 
     int lineCount = 0;
