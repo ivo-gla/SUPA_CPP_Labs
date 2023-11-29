@@ -187,7 +187,8 @@ std::string LeastSquaresCalc_wCHI(std::vector<std::vector<float>> coordinates){
     double sum_y;
     double sum_xy;
     double sum_xx;
-    double N; 
+    double N;
+    double chi; 
     double error_x;
     double error_y;
 
