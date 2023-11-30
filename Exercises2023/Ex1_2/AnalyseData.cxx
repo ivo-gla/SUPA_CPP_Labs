@@ -17,40 +17,74 @@ std::vector<std::vector<float>> readLines(const std::string& filename);
 int main(){
 
     // print n lines of the data in plain text to the terminal
-
+    int choice;
     int number_of_lines; //the number of lines to print
+    int y;
+    int total_lines;
+    float mag1;
     std::string line; //string to contain the lines of the file
     std::string token; //used to split up the data
-    
-    
-    
-    std::cout<<"state the number of lines you would like to read in "; //user specified number of lines to read in
-    std::cin >> number_of_lines; //get the number of lines in the file
-
+    std::string filename;
+    std::vector<std::vector<float>> coordinates;
+    std::string test;
+    filename = "input2D_float.txt";
     
 
-    
-    std::string filename = "input2D_float.txt";
+    while (true) {
+        std::cout << "Choose an option below or enter 0 to exit this program" << std::endl;
+        std::cout << "1: Print lines of a file"<< std::endl;
+        std::cout << "2: Calculate the magnitude of vectors of an inputted file"<< std::endl;
+        std::cout << "3: Perform a least squares fit on data"<< std::endl;
+        std::cout << "4: calcuate x^{y} of given data"<< std::endl;
+        std::cout << "Enter an input:";
+        std::cin >> choice;
 
-    int y = printLines(filename, number_of_lines);
+        switch (choice) {
+            case 1:
+                std::cout << "You chose option 1: Print lines of a file" << std::endl;
+                
+                std::cout<<"state the number of lines you would like to read in "; //user specified number of lines to read in
+                std::cin >> number_of_lines; //get the number of lines in the file
 
-    int total_lines = countLines(filename);
+                y = printLines(filename, number_of_lines);
 
-    std::cout << "the print function is finished" << std::endl;
+                total_lines = countLines(filename);
+
+                std::cout << "the print function is finished" << std::endl;
+                break;
+            case 2:
+                std::cout << "You chose option 2: Calculate the magnitude of vectors of an inputted file" << std::endl;
+
+                coordinates = readLines(filename);
 
 
-    std::vector<std::vector<float>> coordinates = readLines(filename);
-
-
-    for (const auto& row : coordinates) {
-        //std::cout << row[0] << " " <<row[1] << std::endl;
-        float mag1 = magnitude(row);
-        //std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
-        
+                for (const auto& row : coordinates) {
+                    std::cout << row[0] << " " <<row[1] << std::endl;
+                    mag1 = magnitude(row);
+                    //std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
+                    
+                }
+                break;
+            case 3:
+                std::cout << "You chose option 3: Perform a least squares fit on data" << std::endl;
+                coordinates = readLines(filename);
+                for (const auto& row : coordinates) {
+                    std::cout << row[0] << " " <<row[1] << std::endl;
+                }
+                test = LeastSquaresCalc(coordinates);
+                std::cout << test << std::endl;
+                break;
+            case 4:
+                std::cout << "You chose option 4: calcuate x^{y} of given data" << std::endl;
+                //need to implement
+                break;
+            case 0:
+                std::cout << "Exiting the program." << std::endl;
+                return 0;
+            
+        }
     }
 
-    std::string test = LeastSquaresCalc(coordinates);
-    std::cout << test << std::endl;
 
     
 

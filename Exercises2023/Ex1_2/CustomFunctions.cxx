@@ -1,5 +1,7 @@
 #include <iostream>
+#include <vector>
 #include "CustomFunctions.h"
+
 
 
 float magnitude(std::vector<float> numbers){
