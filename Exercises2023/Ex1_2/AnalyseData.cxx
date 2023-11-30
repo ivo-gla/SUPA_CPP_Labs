@@ -27,7 +27,7 @@ int main(){
     std::string filename;
     std::vector<std::vector<float>> coordinates;
     std::string test;
-    filename = "input2D_float.txt";
+    
     
 
     while (true) {
@@ -77,6 +77,7 @@ int main(){
             case 4:
                 std::cout << "You chose option 4: calcuate x^{y} of given data" << std::endl;
                 //need to implement
+                //recursion of some description
                 break;
             case 0:
                 std::cout << "Exiting the program." << std::endl;
