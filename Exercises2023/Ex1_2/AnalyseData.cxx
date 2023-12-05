@@ -28,6 +28,7 @@ int main(){
     std::vector<std::vector<float>> coordinates;
     std::string test;
     
+    filename = "input2D_float.txt";
     
 
     while (true) {
@@ -78,6 +79,14 @@ int main(){
                 std::cout << "You chose option 4: calcuate x^{y} of given data" << std::endl;
                 //need to implement
                 //recursion of some description
+                coordinates = readLines(filename);
+                for (const auto& row : coordinates) {
+                    std::cout << row[0] << " " <<row[1] << std::endl;
+                    double x_y =  powerWithoutLoop(row[0], row[1]);
+                    std::cout << "x^{y} =  " << x_y << std::endl;
+                }
+
+                
                 break;
             case 0:
                 std::cout << "Exiting the program." << std::endl;

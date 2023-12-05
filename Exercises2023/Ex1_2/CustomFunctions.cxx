@@ -247,3 +247,16 @@ std::string LeastSquaresCalc_wCHI(std::vector<std::vector<float>> coordinates){
 
 
 
+double powerWithoutLoop(double x, double y){
+    int y_i = static_cast<int>(y);
+    if (y_i == 0) {
+        return 1.0;
+    }
+    
+    return x * powerWithoutLoop(x, y_i * 1.0 - 1);
+
+}
+   
+
+
+
