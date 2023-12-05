@@ -17,7 +17,7 @@ std::vector<std::vector<float>> readLines(const std::string& filename);
 int main(){
 
     // print n lines of the data in plain text to the terminal
-    int choice;
+    int choice; //used for user specification in choice of output program
     int number_of_lines; //the number of lines to print
     int y;
     int total_lines;
@@ -27,11 +27,14 @@ int main(){
     std::string filename;
     std::vector<std::vector<float>> coordinates;
     std::string test;
+    std::string output_filename;
+    
     
     filename = "input2D_float.txt";
     
 
     while (true) {
+        //list of instructions for the user 
         std::cout << "Choose an option below or enter 0 to exit this program" << std::endl;
         std::cout << "1: Print lines of a file"<< std::endl;
         std::cout << "2: Calculate the magnitude of vectors of an inputted file"<< std::endl;
@@ -57,17 +60,25 @@ int main(){
                 std::cout << "You chose option 2: Calculate the magnitude of vectors of an inputted file" << std::endl;
 
                 coordinates = readLines(filename);
+                output_filename = "Task_2.txt";
+                std::ofstream outputFile(output_filename);
 
-
+                
                 for (const auto& row : coordinates) {
                     std::cout << row[0] << " " <<row[1] << std::endl;
                     mag1 = magnitude(row);
+                    outputFile << row[0] << " " <<row[1] << "Mag 1"<<mag1 <<std::endl;
+
+
+                    
                     //std::cout << "The Magnitude of this vector: (" << row[0] << " " <<row[1] << "), is: "<<mag1 << std::endl;
                     
                 }
+                outputFile.close();
                 break;
             case 3:
                 std::cout << "You chose option 3: Perform a least squares fit on data" << std::endl;
+                output_filename = "Task_3.txt";
                 coordinates = readLines(filename);
                 for (const auto& row : coordinates) {
                     std::cout << row[0] << " " <<row[1] << std::endl;
@@ -77,6 +88,7 @@ int main(){
                 break;
             case 4:
                 std::cout << "You chose option 4: calcuate x^{y} of given data" << std::endl;
+                output_filename = "Task_4.txt";
                 //need to implement
                 //recursion of some description
                 coordinates = readLines(filename);
