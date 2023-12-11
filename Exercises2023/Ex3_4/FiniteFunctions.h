@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include "gnuplot-iostream.h"
+#include <cmath>
 
 #pragma once //Replacement for IFNDEF
 
@@ -46,4 +47,7 @@ protected:
   
 private:
   double invxsquared(double x); //The default functional form
+  double normal_distrobution(double x, double sigma, double mu); //first function added 
+  double cauchy_lorentz(double x, double x0, double gamma)
+  double crystal_ball(double x, double x_bar, double sigma, double n, double alpha)
 };

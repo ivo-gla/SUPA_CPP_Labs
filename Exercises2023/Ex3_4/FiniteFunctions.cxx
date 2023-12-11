@@ -3,6 +3,7 @@
 #include <vector>
 #include "FiniteFunctions.h"
 #include <filesystem> //To check extensions in a nice way
+#include <cmath>
 
 #include "gnuplot-iostream.h" //Needed to produce plots (not part of the course) 
 
@@ -54,6 +55,49 @@ double FiniteFunction::rangeMax() {return m_RMax;};
 ###################
 */ 
 double FiniteFunction::invxsquared(double x) {return 1/(1+x*x);};
+double FiniteFunction::normal_distrobution(double x, double sigma, double mu) {return (1.0 / (sigma * sqrt(2.0 * M_PI))) * exp(-0.5 * pow((x - mu) / sigma, 2));};
+double FiniteFunction::cauchy_lorentz(double x, double x0, double gamma){return (1/(M_PI * gamma *(1+ (pow((x-x0)/gamma,2)))))};
+
+double FiniteFunction::crystal_ball(double x, double x_bar, double sigma, double n, double alpha){
+
+  double A_1 = pow(n/fabs(alpha),n);
+  double A_2 = exp(-pow(fabs(alpha),2)/2);
+  double A = A_1 * A_2;
+
+  double B = n/fabs(alpha) - fabs(alpha);
+
+  double C_1 = n/fabs(alpha) * (1/(n-1));
+  double C_2 = A_2;
+  double C = C_1 * C_2;
+  
+  double D_1 = sqrt(M_PI / 2.0);
+  double D_2 = (1.0 + erf(fabs(alpha) / sqrt(2.0)));
+  double D = D_1 * D_2;
+
+  double N = 1/(sigma * (C+D));
+
+  double test_value = (x - x_bar) / sigma;
+
+  double cb_value = -99;
+
+  if (test_value > -alpha){
+    cb_value = N * exp(-1/2 * (pow(x-x_bar,2))/(pow(2*sigma,2)));
+
+  }
+  else if (test_value <= -alpha){
+
+    cb_value = A * (pow( B- test_value,-n));
+  }
+  else {
+    cb_value = 0;
+
+  }
+
+  return cb_value;
+}
+
+
+
 double FiniteFunction::callFunction(double x) {return this->invxsquared(x);}; //(overridable)
 
 /*

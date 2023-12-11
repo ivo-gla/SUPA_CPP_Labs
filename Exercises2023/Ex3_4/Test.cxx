@@ -17,6 +17,7 @@ int main() {
     std::vector<double> test = readfile(filename);
 
     myfunction.plotData(test, 1000, true);
+    myfunction.printInfo();
     myfunction.plotFunction();
     //FiniteFunction::generatePlot();
     double etet = myfunction.integral(1000);
