@@ -62,8 +62,31 @@ Integration by hand (output needed to normalise function when plotting)
 ###################
 */ 
 double FiniteFunction::integrate(int Ndiv){ //private
-  //ToDo write an integrator
-  return -99;  
+  //ToDo write an integrator - using trapizoidal rule
+  double a = this->rangeMin(); //get the upper and lower limits of the function to integrate
+  double b= this->rangeMax();
+  //std::cout << "a:" << a << "b:" << b  << std::endl;
+  double h = (b - a) / Ndiv; // get the step size
+
+  double f_a =this->callFunction(a);
+  double f_b =this->callFunction(b);
+
+  double integral_value = 0;
+  //std::cout << "h:" << h << "result:" << integral_value  << std::endl;
+
+  for (int i = 1; i < Ndiv; ++i) {
+        double x_i = a + i * h; //a + i*h
+        integral_value += 2 * callFunction(x_i); 
+    }
+
+    integral_value  = h/2 * (f_a+ f_b + integral_value); //1/2[f(a) +f(b)] 
+
+
+
+  //std::cout << "Integral value"<< integral_value  << std::endl;
+
+
+  return integral_value;  
 }
 double FiniteFunction::integral(int Ndiv) { //public
   if (Ndiv <= 0){
