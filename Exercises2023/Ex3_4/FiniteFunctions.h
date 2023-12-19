@@ -14,6 +14,9 @@ public:
   double rangeMin(); //Low end of the range the function is defined within
   double rangeMax(); //High end of the range the function is defined within
   double integral(int Ndiv = 1000); 
+  //calculate mean and std
+  double mean(std::vector<double> &points);
+  double calc_std(std::vector<double> &points);
   std::vector< std::pair<double,double> > scanFunction(int Nscan = 1000); //Scan over function to plot it (slight hack needed to plot function in gnuplot)
   void setRangeMin(double RMin);
   void setRangeMax(double RMax);
@@ -40,6 +43,7 @@ protected:
   bool m_plotfunction = false; //Flag to determine whether to plot function
   bool m_plotdatapoints = false; //Flag to determine whether to plot input data
   bool m_plotsamplepoints = false; //Flag to determine whether to plot sampled data 
+  
   double integrate(int Ndiv);
   std::vector< std::pair<double, double> > makeHist(std::vector<double> &points, int Nbins); //Helper function to turn data points into histogram with Nbins
   void checkPath(std::string outstring); //Helper function to ensure data and png paths are correct
@@ -48,6 +52,6 @@ protected:
 private:
   double invxsquared(double x); //The default functional form
   double normal_distrobution(double x, double sigma, double mu); //first function added 
-  double cauchy_lorentz(double x, double x0, double gamma)
-  double crystal_ball(double x, double x_bar, double sigma, double n, double alpha)
+  double cauchy_lorentz(double x, double x0, double gamma);
+  double crystal_ball(double x, double x_bar, double sigma, double n, double alpha);
 };

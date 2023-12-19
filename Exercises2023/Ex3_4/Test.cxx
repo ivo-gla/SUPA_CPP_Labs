@@ -7,6 +7,7 @@
 
 #include "FiniteFunctions.h"
 std::vector<double> readfile(const std::string& filename);
+//double mean(const std::vector<double>& data);
 
 int main() {
     FiniteFunction myfunction;
@@ -21,6 +22,9 @@ int main() {
     myfunction.plotFunction();
     //FiniteFunction::generatePlot();
     double etet = myfunction.integral(1000);
+    double test_mean = myfunction.mean(test);
+
+    std::cout << test_mean  << std::endl;
 
     myfunction.setOutfile("test124.png");
     myfunction.plotFunction();
@@ -46,3 +50,5 @@ std::vector<double> readfile(const std::string& filename){
     }
     return numbers;
 }
+
+

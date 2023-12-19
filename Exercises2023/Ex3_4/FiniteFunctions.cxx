@@ -49,6 +49,7 @@ void FiniteFunction::setOutfile(std::string Outfile) {this->checkPath(Outfile);}
 double FiniteFunction::rangeMin() {return m_RMin;};
 double FiniteFunction::rangeMax() {return m_RMax;};
 
+
 /*
 ###################
 //Function eval
@@ -56,8 +57,7 @@ double FiniteFunction::rangeMax() {return m_RMax;};
 */ 
 double FiniteFunction::invxsquared(double x) {return 1/(1+x*x);};
 double FiniteFunction::normal_distrobution(double x, double sigma, double mu) {return (1.0 / (sigma * sqrt(2.0 * M_PI))) * exp(-0.5 * pow((x - mu) / sigma, 2));};
-double FiniteFunction::cauchy_lorentz(double x, double x0, double gamma){return (1/(M_PI * gamma *(1+ (pow((x-x0)/gamma,2)))))};
-
+double FiniteFunction::cauchy_lorentz(double x, double x0, double gamma){return (1/(M_PI * gamma *(1+ (pow((x-x0)/gamma,2)))));};
 double FiniteFunction::crystal_ball(double x, double x_bar, double sigma, double n, double alpha){
 
   double A_1 = pow(n/fabs(alpha),n);
@@ -301,4 +301,18 @@ void FiniteFunction::generatePlot(Gnuplot &gp){
     gp << "plot '-' with points ps 2 lc rgb 'blue' title 'sampled data'\n";
     gp.send1d(m_samples);
   }
+}
+
+
+
+double mean(const std::vector<double>& data) {
+    
+    double sum = 0.0;
+
+
+    for (const double& value : data) {
+        sum += value;
+    }
+
+    return sum / data.size();
 }

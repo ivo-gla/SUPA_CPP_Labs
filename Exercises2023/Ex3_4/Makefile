@@ -16,6 +16,9 @@ Test.o : Test.cxx FiniteFunctions.h
 FiniteFunctions.o : FiniteFunctions.cxx FiniteFunctions.h
 	${CC} ${FLAGS} ${LIBS} -c FiniteFunctions.cxx
 
+new_functions.o : new_functions.cxx new_functions.h
+	${CC} ${FLAGS} ${LIBS} -c new_functions.cxx
+
 clean: #No targets just run shell command to rm object files and emacs backups
 	@rm -f *.o *~
 
